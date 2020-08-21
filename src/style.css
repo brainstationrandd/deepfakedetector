@@ -1,0 +1,48 @@
+body {
+  padding: 30px;
+  background-color: lightblue;
+}
+h1, p {
+  font-family: Lato;
+  display: block;
+  margin: auto;
+}
+
+.textCol {
+  color: white;
+}
+
+.get_preview_video_class {
+  padding: 10px;
+  width: 300px;
+  /* height: 200px; */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button{
+  padding-top: 50px;
+}
+.hide {
+  display: none;
+}
+
+#hideInThreeSec {
+  -webkit-animation: cssAnimation 3s forwards; 
+  animation: cssAnimation 3s forwards;
+}
+#hideInFiveSec {
+  -webkit-animation: cssAnimation 5s forwards; 
+  animation: cssAnimation 5s forwards;
+}
+@keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+}
+@-webkit-keyframes cssAnimation {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+}
