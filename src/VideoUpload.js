@@ -23,7 +23,7 @@ class VideoUpload extends Component {
 
   chosenVideo(e) {
         
-		e.preventDefault();
+    e.preventDefault();
 
 		var file = e.target.files[0];
     var file_state = e.target;
@@ -88,7 +88,7 @@ class VideoUpload extends Component {
       <Card
         bg='info'
         // text='dark'
-        id="hideInFiveSec"
+        // id="hideInFiveSec"
         style={{ width: '20rem' }}
         // className="mb-2"
       >
