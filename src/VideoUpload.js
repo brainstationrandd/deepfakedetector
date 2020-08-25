@@ -25,42 +25,45 @@ class VideoUpload extends Component {
         
     e.preventDefault();
 
-		var file = e.target.files[0];
-    var file_state = e.target;
+		let file = e.target.files[0];
+    let file_state = e.target;
     
-		var reader = new FileReader();
+		let reader = new FileReader();
 		reader.onload = () => {
 			this.setState({
 				get_video: reader.result,
 				videoAttribute: file_state
             });
            
-            var vid = new Audio(reader.result);
+            let vid = new Audio(reader.result);
             vid.onloadedmetadata = ()=>{
                 console.log(vid.duration);
                 let minutes = vid.duration/60.0;
-                if(minutes>5) {
+
+                if(minutes>5 || vid.duration==="Infinity") {
+                 
                   this.setState({showalert: true});
                     // alert('Video Duration must be within 5 min');
-                    
+                  this.setState({showresult: false});
                 }
                 else {
+    
                   this.setState({showresult: true});
-                  console.log(this.state.showresult);
+                  
                 }
        
         };  
         
-			console.log(reader.duration);
+			// console.log(reader.duration);
 		};
 		reader.readAsDataURL(file);
 	}
 
   render() {
 
-    var isVideoPreview = '';
-    var showResult = '';
-    var showAlert = '';
+    let isVideoPreview = '';
+    let showResult = '';
+    let showAlert = '';
 
     if(this.state.get_video != '') {
       isVideoPreview = (
@@ -75,9 +78,11 @@ class VideoUpload extends Component {
       
     }
     if(this.state.showalert===true) {
-      
+      window.setTimeout(()=>{
+        this.setState({showalert:false})
+      },3000);
       showAlert= (
-      <Alert id="hideInThreeSec" variant="info" onClose={() => this.setState({showalert: false})} delay={3000} autohide>
+      <Alert variant="info" >
         {/* <Alert.Heading>Oh snap! You got an error!</Alert.Heading> */}
         Video duration must be within 5 min
       </Alert>
